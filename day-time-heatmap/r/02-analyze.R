@@ -3,6 +3,7 @@ library(tidyverse)
 library(lubridate)
 library(showtext)
 library(htmltools)
+library(patchwork)
 
 # load fonts 
 font_add(family = "Roboto",
@@ -22,7 +23,7 @@ cobra_df <- cobra_df |>
   filter(year == "2021") |>
   select(-year)
 
-# prepare data for visual
+# prepare data for visuals
 cobra_df$occur_time <- hour(cobra_df$occur_time)
 
 caption = paste0("<span style='font-family:sans;'>Source: Atlanta PD</span><br>",
@@ -33,11 +34,11 @@ caption = paste0("<span style='font-family:sans;'>Source: Atlanta PD</span><br>"
 cobra_df$occur_day <- factor(cobra_df$occur_day, levels = 
                                c("Monday", "Tuesday", "Wednesday",
                                  "Thursday", "Friday", "Saturday", "Sunday"))
-
-cobra_df |>
+# atl overall visual
+overall_atl <- cobra_df |>
   ggplot(aes(x = occur_day, y = occur_time)) +
   geom_bin2d() +
-  scale_fill_continuous(high = "#004c6d", low = "#e0edf8") +
+  scale_fill_viridis_c(direction = 1) +
   scale_y_reverse(expand = c(0,.25), breaks = round(seq(min(cobra_df$occur_time), 
                                      max(cobra_df$occur_time), by = 1),1)) +
   scale_x_discrete(position = "top") +
@@ -62,3 +63,118 @@ cobra_df |>
   guides(fill=guide_colorbar(ticks.colour = NA))
 
 # ggsave("weekly-heatmap-v3.png", bg="white", units="px", width= 1000, height=898)
+
+# atl larceny from vehicle visual
+larceny <- cobra_df |>
+  filter(uc2_literal == "Larceny From Vehicle") |>
+  ggplot(aes(x = occur_day, y = occur_time)) +
+  geom_bin2d() +
+  scale_fill_viridis_c(direction = 1) +
+  scale_y_reverse(expand = c(0,.25), breaks = round(seq(min(cobra_df$occur_time), 
+                                                        max(cobra_df$occur_time), by = 1),1)) +
+  scale_x_discrete(position = "top") +
+  labs(title = "Larceny From Vehicle",
+       y = "Hour (24H)",
+       fill = "Counts") +
+  theme_void() +
+  theme(text = element_text(family = "Roboto"),
+        axis.text = element_text(family = "Roboto"),
+        axis.text.x = element_text(family = "Roboto"),
+        axis.text.y = element_text(family = "Roboto", size = 10),
+        axis.title.y = element_text(family = "RobotoB", size = 10, angle = 90,
+                                    hjust = .5, vjust = 1),
+        plot.margin = unit(c(8,8,4,4), "pt"),
+        legend.title.align = 0.5,
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 4),
+        legend.title = element_text(family = "RobotoB", size = 11),
+        legend.text = element_text(size = 11)) +
+  guides(fill=guide_colorbar(ticks.colour = NA))
+
+# atl auto theft visual
+auto_theft <- cobra_df |>
+  filter(uc2_literal == "Auto Theft") |>
+  ggplot(aes(x = occur_day, y = occur_time)) +
+  geom_bin2d() +
+  scale_fill_viridis_c(direction = 1) +
+  scale_y_reverse(expand = c(0,.25), breaks = round(seq(min(cobra_df$occur_time), 
+                                                        max(cobra_df$occur_time), by = 1),1)) +
+  scale_x_discrete(position = "top") +
+  labs(title = "Auto Theft",
+       y = "Hour (24H)",
+       fill = "Counts",
+       caption = caption) +
+  theme_void() +
+  theme(text = element_text(family = "Roboto"),
+        axis.text = element_text(family = "Roboto"),
+        axis.text.x = element_text(family = "Roboto"),
+        axis.text.y = element_text(family = "Roboto", size = 10),
+        axis.title.y = element_text(family = "RobotoB", size = 10, angle = 90,
+                                    hjust = .5, vjust = 1),
+        plot.margin = unit(c(8,8,4,4), "pt"),
+        legend.title.align = 0.5,
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 4),
+        legend.title = element_text(family = "RobotoB", size = 11),
+        legend.text = element_text(size = 11),
+        plot.caption = ggtext::element_textbox_simple(color="#444444",
+                                                      size = 11)) +
+  guides(fill=guide_colorbar(ticks.colour = NA))
+
+# atl agg assault visual
+agg_assault <- cobra_df |>
+  filter(uc2_literal == "Agg Assault") |>
+  ggplot(aes(x = occur_day, y = occur_time)) +
+  geom_bin2d() +
+  scale_fill_viridis_c(direction = 1) +
+  scale_y_reverse(expand = c(0,.25), breaks = round(seq(min(cobra_df$occur_time), 
+                                                        max(cobra_df$occur_time), by = 1),1)) +
+  scale_x_discrete(position = "top") +
+  labs(title = "Aggravated Assault",
+       y = "Hour (24H)",
+       fill = "Counts") +
+  theme_void() +
+  theme(text = element_text(family = "Roboto"),
+        axis.text = element_text(family = "Roboto"),
+        axis.text.x = element_text(family = "Roboto"),
+        axis.text.y = element_text(family = "Roboto", size = 10),
+        axis.title.y = element_text(family = "RobotoB", size = 10, angle = 90,
+                                    hjust = .5, vjust = 1),
+        plot.margin = unit(c(8,8,4,4), "pt"),
+        legend.title.align = 0.5,
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 4),
+        legend.title = element_text(family = "RobotoB", size = 11),
+        legend.text = element_text(size = 11)) +
+  guides(fill=guide_colorbar(ticks.colour = NA))
+
+# atl robberies
+robbery <- cobra_df |>
+  filter(uc2_literal == "Robbery") |>
+  ggplot(aes(x = occur_day, y = occur_time)) +
+  geom_bin2d() +
+  scale_fill_viridis_c(direction = 1) +
+  scale_y_reverse(expand = c(0,.25), breaks = round(seq(min(cobra_df$occur_time), 
+                                                        max(cobra_df$occur_time), by = 1),1)) +
+  scale_x_discrete(position = "top") +
+  labs(title = "Robbery",
+       y = "Hour (24H)",
+       fill = "Counts") +
+  theme_void() +
+  theme(text = element_text(family = "Roboto"),
+        axis.text = element_text(family = "Roboto"),
+        axis.text.x = element_text(family = "Roboto"),
+        axis.text.y = element_text(family = "Roboto", size = 10),
+        axis.title.y = element_text(family = "RobotoB", size = 10, angle = 90,
+                                    hjust = .5, vjust = 1),
+        plot.margin = unit(c(8,8,4,4), "pt"),
+        legend.title.align = 0.5,
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 4),
+        legend.title = element_text(family = "RobotoB", size = 11),
+        legend.text = element_text(size = 11)) +
+  guides(fill=guide_colorbar(ticks.colour = NA))
+
+# visuals
+overall_atl
+
+patchwork <- (robbery + agg_assault) / (auto_theft + larceny)
+
+patchwork + plot_annotation(title = "Atlanta Crime 2021") &
+  theme(text = element_text("RobotoB"), plot.title = element_text(hjust = 0.5))
