@@ -4,7 +4,7 @@ This repository is dedicated to my personal data visualization projects; it is h
 ## Visualization Gallery
 ### [RFID Tag Analysis](https://github.com/bradfordjohnson/data-viz/tree/main/rfid-tags)
 - Using the `ggridges` package with the `tidyverse` to create a visual density ridgeline.
-- With data based on historic records, this model plot allows for prediction of future time-based trends.
+- With data based on historic records, this model / exploratory plot allows for the prediction of future time-based trends.
   - Predictions that can drive stakeholder decisions.
 
 <img src = "rfid-tags/daily-rfid-dist-v2.png" width = "850px">
