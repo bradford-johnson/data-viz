@@ -6,6 +6,7 @@ This repository is dedicated to my personal data visualization projects; it is h
 - Using the `ggridges` package with the `tidyverse` to create a visual density ridgeline.
 - With data based on historic records, this model / exploratory plot allows for the prediction of future time-based trends.
   - Predictions that can drive stakeholder decisions.
+  - Also allows for visual time-based comparisons of a variable. 
 
 <img src = "rfid-tags/daily-rfid-dist-v2.png" width = "850px">
 
