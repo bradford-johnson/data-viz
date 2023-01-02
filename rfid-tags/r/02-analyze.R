@@ -36,20 +36,28 @@ daily_rfid_dist <- rfid_df |>
                       quantile_lines = TRUE,
                       jittered_points = TRUE,
                       position = position_points_jitter(width = 0.05, height = 0),
-                        point_shape = '|', point_size = 3, point_alpha = 1, alpha = 0.7) +
+                        point_shape = '|', point_size = 8, point_alpha = 1, alpha = 0.7) +
   scale_fill_viridis_d(name = "Quartiles", alpha = .7) +
   theme_ridges() +
   labs(title = "Daily Distributions - RFID Tags",
        x = "Number of RFID Tags",
        caption = caption) +
   theme(text = element_text(family = "Roboto"),
-        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 2),
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 2, size = 40),
         legend.title.align = 0.5,
-        legend.title = element_text(family = "Roboto"),
-        axis.title.x = element_text(family = "RobotoB"),
+        legend.title = element_text(family = "RobotoB", size = 32),
+        legend.text = element_text(family = "Roboto", size = 28),
+        axis.title.x = element_text(family = "RobotoB", size = 32),
         axis.title.y = element_blank(),
-        plot.caption = ggtext::element_textbox_simple(color="#444444", size = 11),
-        axis.text = element_text(family = "Roboto"),
+        plot.caption = ggtext::element_textbox_simple(color="#444444", size = 30),
+        axis.text.x = element_text(family = "Roboto", size = 32),
+        axis.text.y = element_text(family = "RobotoB", size = 30),
         plot.margin = unit(c(8,4,8,4), "pt"),
-        panel.grid.major = element_line(colour = "#f3f3f3"))
+        panel.grid.major = element_line(colour = "#f3f3f3"),
+        panel.background = element_rect(fill = "#ffffff"),
+        plot.background = element_rect(fill = "#ffffff")
+        )
 
+daily_rfid_dist
+
+ggsave("daily-rfid-dist-v3.png", width = 9, height = 9)
