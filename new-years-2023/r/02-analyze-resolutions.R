@@ -91,7 +91,7 @@ res_corr <- graph_from_data_frame(d = tweet_correlations,
   scale_colour_gradientn(colours=c("#3e3b92", "#f44369")) +
   theme_void() +
   theme(text = element_text(family = "Roboto"),
-        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 3.5, size = 40),
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 3.5, size = 48),
         plot.margin = unit(c(8,12,8,8), "pt"),
         legend.position = "right",
         legend.box = "vertical",
