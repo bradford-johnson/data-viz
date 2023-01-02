@@ -74,8 +74,7 @@ font_add(family = "fb",
 showtext_auto()
 
 # create caption
-caption = paste0("<span style='font-family:sans;'><b>Source: Twitter</b></span><br>",
-                 "<span style='font-family:fb;'>&#xf09b;</span>",
+caption = paste0("<span style='font-family:fb;'>&#xf09b;</span>",
                  "<span style='font-family:sans;color:white;'>.</span>",
                  "<span style='font-family:sans;'>bradfordjohnson</span>")
 
@@ -86,23 +85,28 @@ res_corr <- graph_from_data_frame(d = tweet_correlations,
   ggraph(layout = "fr") +
   geom_edge_link(aes(alpha = Correlation)) + 
   geom_node_point() +
-  geom_node_text(aes(color = number_of_tweets, label = name), repel = TRUE, check_overlap = TRUE, size = 4) + 
+  geom_node_text(aes(color = number_of_tweets, label = name), repel = TRUE, check_overlap = TRUE, size = 11) + 
   labs(title = "Twitter's 2023 New Year's Resolutions",
        caption = caption) +
   scale_colour_gradientn(colours=c("#3e3b92", "#f44369")) +
   theme_void() +
   theme(text = element_text(family = "Roboto"),
-        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 3.5),
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 3.5, size = 40),
         plot.margin = unit(c(8,12,8,8), "pt"),
         legend.position = "right",
         legend.box = "vertical",
         legend.margin = margin(),
         legend.text.align = .5,
         legend.title.align = .5,
-        legend.title = element_text(family = "RobotoB"),
+        legend.title = element_text(family = "RobotoB", size = 32),
+        legend.text = element_text(family = "Roboto", size = 28),
         plot.caption = ggtext::element_textbox_simple(color="#444444",
-                                                      size = 11)) +
+                                                      size = 30),
+        panel.background = element_rect(fill = "#f3f3f3", color = NA),
+        plot.background = element_rect(fill = "#f3f3f3")) +
   guides(color = guide_legend(title = "Number of Tweets"))
 
 # view plot
 res_corr
+
+ggsave("new-years-resolutions-v3.png", width = 9, height = 9)
