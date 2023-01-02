@@ -1,7 +1,11 @@
 # Personal Data Visualization Projects
-## Objective
+Objective
+---
+
 This repository is dedicated to my personal data visualization projects; it is here to share the `code` and creation process with others!
-## Visualization Gallery
+
+Visualization Gallery
+---
 ### [2023 New Year's Resolution Tweets](https://github.com/bradfordjohnson/data-viz/tree/main/new-years-2023)
 - Data collected using the `Twitter API` via the `rtweet` package.
 - Pairwise correlation of words to see trends in user's resolutions.
@@ -16,7 +20,7 @@ This repository is dedicated to my personal data visualization projects; it is h
   - Predictions that can drive stakeholder decisions.
   - Also allows for visual time-based comparisons of a variable. 
 
-<img src = "rfid-tags/daily-rfid-dist-v2.png" width = "850px">
+<img src = "rfid-tags/daily-rfid-dist-v3.png" width = "90%">
 
 ---
 
