@@ -10,7 +10,7 @@ Visualization Gallery
 - Data collected using the `Twitter API` via the `rtweet` package.
 - Pairwise correlation of words to see trends in user's resolutions.
 
-<img src = "new-years-2023/new-years-resolutions-v2.png" width = "850px">
+<img src = "new-years-2023/new-years-resolutions-v3.png" width = "90%">
 
 ---
 
