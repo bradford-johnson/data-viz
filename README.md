@@ -7,10 +7,11 @@ This repository is dedicated to my personal data visualization projects; it is h
 Visualization Gallery
 ---
 ### [Atlanta Crime Maps | 2021](https://github.com/bradfordjohnson/data-viz/tree/main/atlanta-crime-maps)
-- Using the first dataset I began exploring and learning `R` with.
-  - 4 uniform heatmaps that show crime counts by `NPU` or `Neighborhood Planning Unit`
-    - `Burglary`, `Aggravated Assault`, `Auto Theft` and `Homicide`.
 - Joining various sets of grouped crime data to a `.geojson` file to create the map with `ggplot2` and `sf` packages.
+- Using the first dataset I began exploring and learning `R` with.
+  - 4 uniform NPI heatmaps that show crime counts by **NPU** or **Neighborhood Planning Unit**.
+    - `Burglary`, `Aggravated Assault`, `Auto Theft` and `Homicide`.
+    
 <p align= "center>
 <img src = "atlanta-crime-maps/visuals/atl-burg-2021.png" width = "90%">
 
