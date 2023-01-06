@@ -43,7 +43,7 @@ daily_rfid_dist <- rfid_df |>
        x = "Number of RFID Tags",
        caption = caption) +
   theme(text = element_text(family = "Roboto"),
-        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 2, size = 40),
+        plot.title = element_text(family = "RobotoB", hjust = .5, vjust = 2, size = 58),
         legend.title.align = 0.5,
         legend.title = element_text(family = "RobotoB", size = 32),
         legend.text = element_text(family = "Roboto", size = 28),
@@ -51,7 +51,7 @@ daily_rfid_dist <- rfid_df |>
         axis.title.y = element_blank(),
         plot.caption = ggtext::element_textbox_simple(color="#444444", size = 30),
         axis.text.x = element_text(family = "Roboto", size = 32),
-        axis.text.y = element_text(family = "RobotoB", size = 30),
+        axis.text.y = element_text(family = "RobotoB", size = 34),
         plot.margin = unit(c(8,4,8,4), "pt"),
         panel.grid.major = element_line(colour = "#f3f3f3"),
         panel.background = element_rect(fill = "#ffffff"),
