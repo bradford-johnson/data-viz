@@ -19,7 +19,7 @@ Visualization Gallery
   
 ---
 ### [RFID Tag Analysis](https://github.com/bradfordjohnson/data-viz/tree/main/rfid-tags)
-- Using the `ggridges` package with the `tidyverse` to create a visual density ridgeline.
+- Using the `ggridges` package with the `tidyverse` to create a visual density ridgeline of **synthetic data**.
 - With data based on historic records, this model / exploratory plot allows for the prediction of future time-based trends.
   - Predictions that can drive stakeholder decisions.
   - Also allows for visual time-based comparisons of a variable. 
