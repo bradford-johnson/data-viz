@@ -16,18 +16,7 @@ Visualization Gallery
 <a href="https://github.com/bradfordjohnson/data-viz/blob/main/atlanta-crime-maps/r/02-map.R"> 
 <img src = "atlanta-crime-maps/visuals/atl-burg-2021.png" width = "90%">
   </a>
-  
----
-### [RFID Tag Analysis](https://github.com/bradfordjohnson/data-viz/tree/main/rfid-tags)
-- Using the `ggridges` package with the `tidyverse` to create a visual density ridgeline of **synthetic data**.
-- With data based on historic records, this model / exploratory plot allows for the prediction of future time-based trends.
-  - Predictions that can drive stakeholder decisions.
-  - Also allows for visual time-based comparisons of a variable. 
-<p align= "center">
-<a href="https://github.com/bradfordjohnson/data-viz/blob/main/rfid-tags/r/02-analyze.R"> 
-<img src = "rfid-tags/daily-rfid-dist-v3.png" width = "90%">
-  </a>
-  
+
 ---
 ### [2023 New Year's Resolution Tweets](https://github.com/bradfordjohnson/data-viz/tree/main/new-years-2023)
 - Data collected using the `Twitter API` via the `rtweet` package.
